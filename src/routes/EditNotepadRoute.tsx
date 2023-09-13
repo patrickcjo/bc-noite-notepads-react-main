@@ -17,7 +17,7 @@ const texts = {
   subtitlePlaceholder: "Digite o subtítulo",
   contentPlaceholder: "Digite o conteúdo",
   submit: "Enviar",
-  submitSuccess: "Seu notepad foi editado com sucesso!",
+  submitid: "Seu notepad foi editado com sucesso!",
   submitFailure: "Houve um erro ao editar o seu notepad. :(",
 };
 
@@ -37,8 +37,8 @@ export function EditNotepadRoute() {
     async onValidSubmit(event) {
       event.preventDefault();
       const response = await api.patch(`/notepads/${params.id}`, event.data);
-      if (response.data.success) {
-        toast(texts.submitSuccess);
+      if (response.data.id) {
+        toast(texts.submitid);
         navigate(`/ver-notepad/${params.id}`);
       } else {
         toast(texts.submitFailure);

@@ -15,7 +15,7 @@ export function CreateNotepadRoute() {
     async onValidSubmit(event) {
       event.preventDefault();
       const response = await api.post("/notepads", event.data);
-      if (response.data.success) {
+      if (response.data.id) {
         toast("Seu notepad foi criado com sucesso!");
         navigate("/");
       } else {
